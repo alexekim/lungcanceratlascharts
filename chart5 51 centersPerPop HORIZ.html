@@ -1,0 +1,111 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<style media="screen">
+  #chartNew {
+    min-width: 310px;
+    width: 100%;
+    /*height must be a minimum of 860px*/
+    /*min-height: 860px;*/
+    /*height: 1000px;*/
+    margin: 0 auto;
+  }
+
+  .highcharts-background {
+    fill: transparent;
+  }
+
+  /*body{
+    background: url("https://images.unsplash.com/photo-1463780324318-d1a8ddc05a11") no-repeat center center fixed;
+  }*/
+
+  .highcharts-title {
+    font-family: 'Lato', sans-serif !important;
+  }
+
+  .highcharts-legend {
+    font-family: 'Lato', sans-serif !important;
+  }
+
+  .highcharts-axis-labels {
+    font-family: 'Lato', sans-serif !important;
+  }
+
+  .highcharts-xaxis-labels {
+    font-family: 'Lato', sans-serif !important;
+  }
+
+  @media (max-width: 700px) {
+    #chart2 {
+      /*height: 1000px;*/
+    }
+  }
+</style>
+
+<!-- 860px min height before font gets messed up -->
+<div id="chartNew"></div>
+
+<script>
+  var chartNew = function() {
+    Highcharts.setOptions({
+      colors: ["#a3a9ac","#ed1b2d","#b2ecff" ,"#3a75c4"  ]
+    })
+
+    Highcharts.chart('chartNew', {
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'Stage at Diagnosis and 5-Year Survival Rate (National data used for stage by survival as this state does not have these data available.)'
+      },
+      xAxis: {
+        categories: ['Stage at Diagnosis', '5-Year Relative Survival']
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: '(%)'
+        }
+      },
+      legend: {
+        reversed: true
+      },
+      tooltip:{
+        valueSuffix: "%"
+      },
+      plotOptions: {
+        series: {
+          stacking: 'normal',
+          "formatter": function(){
+            return this.x + "%";
+          }
+        },
+        bar: {
+          dataLabels: {
+            enabled: true,
+          },
+          "formatter": function(){
+            return this.x + "%";
+          }
+        }
+      },
+      series: [{
+        name: 'unstaged tumors not shown',
+        data: []
+      }, {
+        name: 'Distant (cancer has metastisized)',
+        data: [57, 5]
+      }, {
+        name: 'Regional (spread to regional lymph nodes)',
+        data: [22, 31]
+      }, {
+        name: 'Localized (confined to primary site)',
+        data: [16, 57]
+      }]
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    chartNew();
+  })
+</script>

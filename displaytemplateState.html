@@ -1,10 +1,22 @@
+<h1 class="internalPageTitle light-blue">
+  <t:if test="headline != null">${headline}</t:if>
+  <t:else>${title}</t:else>
+</h1>
+
 <!-- EMBEDDED STYLES COMPONENT -->
 <div id="item-858160711" class="templateComponent" style="display: inline;"></div>
 
-
+<div id="anchorLinks">
+  <p>
+    Jump to:
+    <a id="firstAnchor" href="#rates" target="_self">Lung Cancer Rates</a> |
+    <a href="#prevention" target="_self">Prevention</a> |
+    <a href="#summary" target="_self">Summary</a>
+  </p>
+</div>
 
 <!-- state intro -->
-<div class="">
+<div class="box">
   ${state intro}
 </div>
 
@@ -12,10 +24,10 @@
 <h2>Lung Cancer Rates</h2>
 
 <h3>Incidence</h3>
-<div class="">
+<div class="box">
   ${incidence_intro}
 </div>
-<div class="">
+<div class="box">
   <!-- CHART: state ranking by incidence rate -->
 </div>
 <!-- CHART 3 (reordered to 1st) -->
@@ -28,10 +40,10 @@
 
 
 <h3>5-Year Survival Rate</h3>
-<div class="">
+<div class="box">
   ${survival_intro}
 </div>
-<div class="">
+<div class="box">
   <!-- CHART: State ranking by survival rate -->
 </div>
 <!-- CHART 4 (reordered to 2nd)-->
@@ -41,10 +53,10 @@
 </div>
 
 <h3>Stage at Diagnosis</h3>
-<div class="">
+<div class="box">
   ${stage_intro}
 </div>
-<div class="">
+<div class="box">
   <!-- CHART: stage at diagnosis and 5 year survival rate (national data used for stage survival as this state does not have these data available) -->
 </div>
 <!-- CHART 5 (reordered to 3rd)-->
@@ -55,10 +67,10 @@
 
 
 <h3>Surgical Treatment</h3>
-<div class="">
+<div class="box">
   ${treatment_intro}
 </div>
-<div class="">
+<div class="box">
   <!-- CHART: State ranking by percent of cases treated by surgery -->
 </div>
 <!-- CHART 6 (reordered to 4th) -->
@@ -71,10 +83,10 @@
 
 <h2>Prevention</h2>
 
-<div class="">
+<div class="box">
   ${prevention_text_1}
 </div>
-<div class="">
+<div class="box">
   <!-- CHART:  state ranking by cneters per million people -->
 </div>
 <!-- CHART 2 (reordered to 5th)-->
@@ -83,10 +95,10 @@
   <div id="item-858160716" class="templateComponent" style="display: inline;"></div>
 </div>
 
-<div class="">
+<div class="box">
   ${prevention_text_2}
 </div>
-<div class="">
+<div class="box">
   <!-- CHART: relationship between adult smoking and lung cancer incidence rate by state -->
 </div>
 <!-- CHART 1 (reordered to 6th) -->
@@ -95,10 +107,10 @@
   <div id="item-858160717" class="templateComponent" style="display: inline;"></div>
 </div>
 
-<div class="">
+<div class="box">
   ${prevention_text_3}
 </div>
-<div class="">
+<div class="box">
   <!-- CHART: n/a -->
 </div>
 
@@ -106,6 +118,10 @@
 
 
 <h2>Summary</h2>
-<div class="">
+<div class="box">
   ${summary}
 </div>
+
+
+<!-- atlas scripts -->
+<div id="item-858160718" class="templateComponent" style="display: inline;"></div>

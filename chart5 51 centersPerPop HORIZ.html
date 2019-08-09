@@ -48,10 +48,16 @@
 <div id="chartNew"></div>
 
 <script>
-  $("#stateSelectList").on("change", function(){
+  // $("#stateSelectList").on("change", function(){
+  //   setTimeout(chartNew, 500);
+  // });
+  document.getElementById("stateSelectList").addEventListener("change", function(){
     setTimeout(chartNew, 500);
-  })
-  $("#searchZip").on("change", function(){
+  });
+  // $("#searchZip").on("submit", function(){
+  //   setTimeout(chartNew,1500);
+  // });
+  document.getElementById("searchZip").addEventListener("submit", function(){
     setTimeout(chartNew,1500);
   })
 
@@ -325,7 +331,6 @@
     Highcharts.setOptions({
       colors: ["#a3a9ac","#ed1b2d","#b2ecff" ,"#3a75c4"  ]
     })
-
     Highcharts.chart('chartNew', {
       title: {
         text: 'Stage at Diagnosis and 5-Year Survival Rate (National data used for stage by survival as this state does not have these data available.)'
@@ -361,14 +366,10 @@
               return this.y + "%";
             }
           }
-        },
-        spline: {
-          color: "#555559",
-          lineWidth: 1
         }
       },
       series: [{
-        name: 'unstaged tumors not shown',
+        name: 'unstaged tumors',
         type: 'bar',
         data: chartData[state]["unstaged"] || [ 100-(chartData[state]["localized"][0]+chartData[state]["regional"][0]+chartData[state]["distant"][0]), 100-(chartData[state]["localized"][1]+chartData[state]["regional"][1]+chartData[state]["distant"][1]) ]
       }, {
@@ -383,20 +384,80 @@
         name: 'Localized (confined to primary site)',
         type: 'bar',
         data: chartData[state]["localized"]
-      },{
-        name: "Distant Line",
-        type: "spline",
-        data: [ chartData[state]["localized"][0]+chartData[state]["regional"][0]+chartData[state]["distant"][0], chartData[state]["localized"][1]+chartData[state]["regional"][1]+chartData[state]["distant"][1] ]
-      },{
-        name: "Regional Line",
-        type: "spline",
-        data: [ chartData[state]["localized"][0]+chartData[state]["regional"][0], chartData[state]["localized"][1]+chartData[state]["regional"][1] ]
-      },{
-        name: "Localized Line",
-        type: "spline",
-        data: [ chartData[state]["localized"][0], chartData[state]["localized"][1] ]
       }]
     });
+
+    // Highcharts.chart('chartNew', {
+    //   title: {
+    //     text: 'Stage at Diagnosis and 5-Year Survival Rate (National data used for stage by survival as this state does not have these data available.)'
+    //   },
+    //   xAxis: {
+    //     categories: ['Stage at Diagnosis', '5-Year Relative Survival'],
+    //     labels : {
+    //       style: {
+    //         "fontSize": "16px"
+    //       }
+    //     }
+    //   },
+    //   yAxis: [
+    //     {
+    //     min: 0,
+    //     title: {
+    //       text: '(%)'
+    //       }
+    //     }
+    //   ],
+    //   legend: {
+    //     reversed: true
+    //   },
+    //   tooltip:{
+    //     valueSuffix: "%"
+    //   },
+    //   plotOptions: {
+    //     bar: {
+    //       stacking: 'normal',
+    //       dataLabels: {
+    //         enabled: true,
+    //         formatter: function(){
+    //           return this.y + "%";
+    //         }
+    //       }
+    //     },
+    //     spline: {
+    //       color: "#555559",
+    //       lineWidth: 1
+    //     }
+    //   },
+    //   series: [{
+    //     name: 'unstaged tumors not shown',
+    //     type: 'bar',
+    //     data: chartData[state]["unstaged"] || [ 100-(chartData[state]["localized"][0]+chartData[state]["regional"][0]+chartData[state]["distant"][0]), 100-(chartData[state]["localized"][1]+chartData[state]["regional"][1]+chartData[state]["distant"][1]) ]
+    //   }, {
+    //     name: 'Distant (cancer has metastisized)',
+    //     type: 'bar',
+    //     data: chartData[state]["distant"]
+    //   }, {
+    //     name: 'Regional (spread to regional lymph nodes)',
+    //     type: 'bar',
+    //     data: chartData[state]["regional"]
+    //   }, {
+    //     name: 'Localized (confined to primary site)',
+    //     type: 'bar',
+    //     data: chartData[state]["localized"]
+    //   },{
+    //     name: "Distant Line",
+    //     type: "spline",
+    //     data: [ chartData[state]["localized"][0]+chartData[state]["regional"][0]+chartData[state]["distant"][0], chartData[state]["localized"][1]+chartData[state]["regional"][1]+chartData[state]["distant"][1] ]
+    //   },{
+    //     name: "Regional Line",
+    //     type: "spline",
+    //     data: [ chartData[state]["localized"][0]+chartData[state]["regional"][0], chartData[state]["localized"][1]+chartData[state]["regional"][1] ]
+    //   },{
+    //     name: "Localized Line",
+    //     type: "spline",
+    //     data: [ chartData[state]["localized"][0], chartData[state]["localized"][1] ]
+    //   }]
+    // });
   }
 
   document.addEventListener("DOMContentLoaded", function(){
